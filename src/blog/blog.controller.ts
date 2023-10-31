@@ -4,8 +4,11 @@ import { CreateBlogDto } from './dto/create-blog.dto';
 import { UpdateBlogDto } from './dto/update-blog.dto';
 import { Auth } from '../auth/decorators/auth.decorator';
 import { Role } from '../common/enums/rol.enum';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
-@Auth(Role.ADMIN)
+@ApiTags('blog')
+@ApiBearerAuth()
+@Auth(Role.USER)
 @Controller('blog')
 export class BlogController {
   constructor(private readonly blogService: BlogService) {}
