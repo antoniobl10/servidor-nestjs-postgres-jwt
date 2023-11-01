@@ -16,6 +16,9 @@ async function bootstrap() {
     }),
   );
 
+  // faltaba agregar el CORS
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle("Blog API example")
     .setDescription("The blog API description")
@@ -25,6 +28,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup("docs", app, document);
 
-  await app.listen(parseInt(process.env.PORT) || 3000);
+  await app.listen(parseInt(process.env.PORT) || 8000);
 }
 bootstrap();
